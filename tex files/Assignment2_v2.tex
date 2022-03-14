@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+
+%\newenvironment{sloppypar*}
+% {\sloppy\ignorespaces}
+% {\par}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[margin=1in]{geometry}
+%\usepackage{graphicx}
+%\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{booktabs} 
+\usepackage{multirow}
+\usepackage{microtype}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+%\hfuzz=140pt
+%\newsavebox{\mybox}
+
+
+\begin{document}
+
+%\sbox{\mybox}{\hbadness=11000 \parbox{2cm}{\lipsum[1]}}
+
+
+\textbf{Assignment 2 - Applied Econometrics - ECON6645}
+
+\textbf{2022-02-07}
+
+\textbf{Justin Desrosier}
+
+\noindent\rule{16.51cm}{0.4pt}
+
+\textbf{Question 1}
+
+{
+\begin{table}[ht]
+\caption{Summary Statistics}
+\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{1}{ccccc}}
+\toprule
+                    &           n&        Mean&          SD&         Min&         Max          \\
+\midrule
+Equivalent Household Income & 3563 & 103,323&  153,548&  2,466&  671,022\\
+\bottomrule
+\end{tabular}
+}
+{
+\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{1}{ccccc}}
+\toprule
+                    &           5\%&         25\%&         50\%&         75\%&         95\%\\
+\midrule
+Equivalent Household Income        &              9,193&      24,716&      45,259&      81,149&     474,484\\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+
+Table 1 displays the summary statistics of our primary variable of interest, income. The variable \textit{Equivalent Household Income} has a continuous value computed from discrete income categories. The computation method used (exception: top-coded category) was midpoint and quantile methods using a uniform distribution. The top-coded category continuous value was derived only as the expected value.
+
+\textit{Equivalent Household Income} has also been adjusted for economies of scale by dividing the value by the square root of \textit{Household Size}. This adjustment is an effective way to make inferences on individual income levels when only household survey data is available. 
+
+We can see from the summary statistics in table 1, that the mean income level is 103,323. However, the standard deviation is large at 153,548 indicating there is a great deal of spread across income levels for the sample. Furthermore, the 50th percentile also represents the median income observed, which is 45,259, a significant difference from the mean. The percentiles also exhibit an increasing convex slope that is an indication of the income distribution for this sample.
+
+
+\textbf{Question 2}
+
+Using a variable indicating a respondent's job insecurity or opinion on the strength of the economy would be a suboptimal measure for their economic security given the data that is available. For the purpose of measuring the economic insecurity of a person, it is convenient that there is a reference point of their opinion that we can ascertain using their responses regarding future expectations and past instances of their prosperity.
+
+From the egotropic standpoint, we can use a job insecurity binary variable to indicate a respondents personal economic well being. However, it is an improved indication if we compute a measure of entrenchment in this conviction. By including an opinion of their past and future labour market scenario in a principal component analysis, we can derive a dynamic representation of a respondent's egotropic economic insecurity sentiment that is also continuous.
+
+Similarly in terms of the sociotropic standpoint, the availability of past and future opinions on the state of the economy allows us to consider time-variant nuances. In particular, we can again use PCA with the responses revealing sociotropic impressions of economic insecurity to create an index that manifests changing outlooks.           
+
+\textbf{Question 3}
+
+{
+\begin{table}[ht]
+\caption{Authoritarianism Scale on Explanatory Variables}
+\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+            Dependent variable: Authoritarianism Scale &\multicolumn{1}{c}{[Males]}&\multicolumn{1}{c}{[Females]}\\
+\hline 
+\\
+ln(Equivalent Household Income)&     -0.0365         &     -0.0109         \\
+            &     (-1.26)         &     (-0.49)         \\
+[1em]
+Sociotropic Opinion of Economic Insecurity &       0.157\sym{***}&       0.163\sym{***}\\
+            &      (5.36)         &      (6.06)         \\
+[1em]
+Egotropic Opinion of Economic Insecurity   &     -0.0260         &      0.0240       \\
+            &     (-0.82)         &      (0.88)         \\
+[1em]
+Visible Minority&      -0.304\sym{***}&      -0.394\sym{***}\\
+            &     (-4.55)         &     (-6.79)         \\
+[1em]
+\textbf{Education}            &                  &                 \\            
+[1em]
+\hspace{\parindent} \hspace{\parindent} Less than High School (control)      &           0         &           0         \\
+            &         (.)         &         (.)         \\
+[1em]
+\hspace{\parindent} \hspace{\parindent} High School      &      -0.117         &      0.0116         \\
+            &     (-1.13)         &      (0.08)         \\
+[1em]
+\hspace{\parindent} \hspace{\parindent} College Diploma      &      -0.252\sym{*}  &     0.00878         \\
+            &     (-2.49)         &      (0.06)         \\
+[1em]
+\hspace{\parindent} \hspace{\parindent}  Bachelor's Degree      &      -0.511\sym{***}&      -0.560\sym{***}\\
+            &     (-4.84)         &     (-3.91)         \\
+[1em]
+\hspace{\parindent} \hspace{\parindent} Graduate or Professional Degree      &      -0.750\sym{***}&      -0.719\sym{***}\\
+            &     (-6.49)         &     (-4.94)         \\
+[1em]
+"Born Again"  &       0.465\sym{***}&       0.474\sym{***}\\
+            &      (8.09)         &      (9.11)         \\
+[1em]
+Age         &     0.00773\sym{***}&     0.00326\sym{*}  \\
+            &      (4.70)         &      (2.04)         \\
+[1em]
+\textit{Constant}      &       0.734\sym{*}  &       0.693\sym{**} \\
+            &      (2.20)         &      (2.61)         \\
+\hline
+\(N\)       &        1499         &        1649         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
+}
+
+Table 2 consists of the coefficients from a regression of an authoritarianism scale on sociotropic and egotropic measures of economic insecurity convictions and several control variables. Model (1) was regressed only for respondents who indicated that their gender was male, and (2) for female. The dependent variable, authoritarianism scale, is derived from a survey response between 0-8 where the value is increasing such that a higher number indicates a higher acceptance of authoritarian principles. The authoritarianism scale is standardized in a manner that alters its interpretation to terms more familiar in statistics, that is, its mean is 0 and has a standard deviation of 1.
+
+Equivalent household income, representing a proxy for individual income as discussed  in Question 1, can be interpreted as the following: a 1\% increase of income is associated with a change of -0.04 and -0.01 standard deviations on the authoritarianism scale for males and females respectively. Alternatively, this result could be interpreted as a 10\% increase in income is associated with a decrease in the acceptance of authoritarianism by 13.6\% for males and 3.41\% for females. Although the results are statistically insignificant.  
+
+For the two different measures of opinion on economic insecurity, the results are interpreted the fraction of a 1 standard deviation in authoritarianism acceptance associated with a 1 standard deviation increase in opinion of economic insecurity. That is, a 34.1\% elevation in the average male respondent's stance on their level of economic insecurity is associated with a 5.35\% increase in their acceptance of authoritarianism. Similarly, 5.56\% for females, from the sociotropic perspective. 
+
+Comparing the coefficients for sociotropic and egotropic opinions of economic insecurity, it becomes clear that heightened levels of economic insecurity are associated with greater acceptance of authoritarianism only when insecurity is being considered from a sociotropic indications. Respondents tend to be more comfortable with authoritarianism when they feel that their prosperity is out of their own control.  
+
+     
+
+
+
+
+
+
+\end{document}

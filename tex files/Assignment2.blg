@@ -1,0 +1,5 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'Assignment2.blg'
+[209] biber-MSWIN64:340> INFO - === 
+[623] Utils.pm:411> ERROR - Cannot find 'Assignment2.bcf'!
+[623] Biber.pm:132> INFO - ERRORS: 1
